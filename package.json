@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "build":"npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
-    "vercel-build":"npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css",
+    "productionBuild":"npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
