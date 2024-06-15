@@ -1,2 +1,4 @@
 #Unnecessary Files
 node_modules/
+
+vercel.json/
