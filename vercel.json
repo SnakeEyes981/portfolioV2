@@ -1,9 +1,19 @@
 {
-    "buildCommand": "npm run vBuild",
+    "name": "hassanyaseenworks",
+    "version": 1,
     "builds": [
       {
         "src": "./package.json",
         "use": "@vercel/node"
       }
-    ]
+    ],
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/(.*)", "dest": "/index.html" }
+    ],
+    "env": {
+      "MY_CUSTOM_ENV_VAR": "value"
+    },
+    "buildCommand": "npm run build",
+    "outputDirectory": "./"
   }
