@@ -27,7 +27,7 @@ darkSwitch.addEventListener('click', function() {
 })
 
 
-function attachAnimationListeners() {
+function page1Listeners() {
     animatedRectangle = document.getElementById('rectangle');
     animatedRectangle.addEventListener('animationiteration', function () {
         let tempColor = generateColor();
@@ -37,7 +37,16 @@ function attachAnimationListeners() {
     });
 }
 
-attachAnimationListeners();
+page1Listeners();
+
+function page2Listeners () {
+    const animateText = document.getElementsByClassName('animate-text');
+    animateText[0].style.transition = 'all 2s'
+    setInterval(() => {
+        animateText[0].style.color = generateColor();
+    }, 2000);
+
+}
 
 const page1 = `<div id="page1" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6">
                 <div id="container" class="relative w-full">
@@ -51,8 +60,8 @@ const page1 = `<div id="page1" class="col-start-1 col-span-12 md:col-start-4 md:
                 </div>
             </div>`;
 const page2 = `<div id="page2" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6 px-6">
-                <h1 class="font-rokkitt font-bold leading-5 sm:leading-none text-xl sm:text-3xl text-justify">
-                    Hey there! I am a <span class="text-red-500 font-extrabold">full-stack web developer</span> with a strong knowledge and understanding of modern technologies and frameworks. I specialize in creating complex, responsive web designs from scratch, ensuring that every site is both functional and visually stunning. My expertise includes not only front-end technologies like <span class="text-emerald-500">HTML, CSS, and JavaScript</span> but also back-end development with <span class="text-amber-400">Node.js, Express</span>, and databases like MongoDB and SQL.
+                <h1 class="font-rokkitt font-bold leading-5 sm:leading-none text-xl sm:text-3xl text-justify text-teal-500 dark:text-cyan-300 animate-text">
+                    Hey there! I am a full-stack web developer with a strong knowledge and understanding of modern technologies and frameworks. I specialize in creating complex, responsive web designs from scratch, ensuring that every site is both functional and visually stunning. My expertise includes not only front-end technologies like HTML, CSS, and JavaScript but also back-end development with Node.js, Express, and databases like MongoDB and SQL.
                 </h1>
             </div>`;
 // const page3 = document.getElementById('')
@@ -74,13 +83,14 @@ renderBtn.addEventListener('click', () => {
     const oldPageRef = document.getElementById('contentBox').firstElementChild.id;
     if(pageNumber == 1) {
         container.replaceChild(getFragement(page2), document.getElementById(oldPageRef));
+        page2Listeners();
         pageNumber++;
         renderBtn.innerHTML = 'want to see my work?';
     }
     else if(pageNumber == 2) {
         container.replaceChild(getFragement(page1), document.getElementById(oldPageRef));
         pageNumber--;
-        attachAnimationListeners();
+        page1Listeners();
         renderBtn.innerHTML = 'who am i?'
     }
     
