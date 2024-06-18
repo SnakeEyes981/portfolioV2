@@ -8,11 +8,11 @@
 
 @layer components {
     .custom-btn {
-        @apply border-black text-xl font-bold px-20 py-2 rounded-e-full rounded-b-full font-raleway uppercase border-4 px-8 py-2 border-black dark:border-amber-400 transition-all duration-300
+        @apply border-black text-lg sm:text-2xl 2xl:text-4xl 2xl:border-8 font-bold px-12 sm:px-20 py-0 sm:py-2 2xl:px-28 2xl:py-4 rounded-e-full rounded-b-full font-raleway uppercase border-4 border-black dark:border-amber-400 transition ease-in-out duration-300
     }
 
     .headingText {
-        @apply font-rokkitt text-5xl sm:text-7xl md:text-7xl lg:text-9xl font-black uppercase tracking-widest
+        @apply font-rokkitt text-3xl sm:text-8xl md:text-7xl lg:text-9xl 2xl:text-[12rem] font-black uppercase tracking-widest
     }
 }
 
@@ -25,7 +25,10 @@
     stroke-dashoffset: 0;
     stroke-dasharray: 3000;
     animation: draw 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s forwards infinite;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
 }
+
+
 
 @keyframes draw {
     from {
@@ -33,5 +36,23 @@
     }
     to {
         stroke-dashoffset: 3000;
+    }
+}
+
+@keyframes removePage {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%;
+    }
+}
+
+@keyframes addPage {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%
     }
 }

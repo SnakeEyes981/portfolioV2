@@ -37,12 +37,36 @@ function page1Listeners() {
     });
 }
 
+let pageNumber = 1; // Variable to save current Page Reference
+
+function pageTransition () {
+    //Current Page = Old Page
+    let tempPage = pageNumber;
+    let oldPage, newPage;
+    console.log(tempPage);
+    if (tempPage == 1) {
+        oldPage = document.getElementById('page1');
+    } else if (tempPage == 2) {
+        oldPage = document.getElementById('page2');
+    } else if (tempPage == 3) {
+        oldPage = document.getElementById('page3');
+    } else if (tempPage == 4) {
+        oldPage = document.getElementById('page4');
+    } else {
+        oldPage = null;
+    }
+    console.log(oldPage);
+
+    oldPage.style.animation = 'removePage 2s linear forward'
+}
+
 page1Listeners();
 
 function page2Listeners () {
     const animateText = document.getElementsByClassName('animate-text');
     animateText[0].style.transition = 'all 2s'
-    setInterval(() => {
+    const intervalID = setInterval(() => {
+        if(pageNumber != 2) {clearInterval(intervalID)}
         animateText[0].style.color = generateColor();
     }, 2000);
 
@@ -60,7 +84,7 @@ const page1 = `<div id="page1" class="col-start-1 col-span-12 md:col-start-4 md:
                 </div>
             </div>`;
 const page2 = `<div id="page2" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6 px-6">
-                <h1 class="font-rokkitt font-bold leading-5 sm:leading-none text-xl sm:text-3xl text-justify text-teal-500 dark:text-cyan-300 animate-text">
+                <h1 class="font-rokkitt font-bold leading-5 sm:leading-none text-xl sm:text-3xl 2xl:text-6xl text-justify text-teal-500 dark:text-cyan-300 animate-text">
                     Hey there! I am a full-stack web developer with a strong knowledge and understanding of modern technologies and frameworks. I specialize in creating complex, responsive web designs from scratch, ensuring that every site is both functional and visually stunning. My expertise includes not only front-end technologies like HTML, CSS, and JavaScript but also back-end development with Node.js, Express, and databases like MongoDB and SQL.
                 </h1>
             </div>`;
@@ -77,11 +101,12 @@ function getFragement(htmlString) {
 }
 
 const renderBtn = document.getElementById('renderSwitch');
-let pageNumber = 1;
+
 
 renderBtn.addEventListener('click', () => {
     const oldPageRef = document.getElementById('contentBox').firstElementChild.id;
     if(pageNumber == 1) {
+        pageTransition();
         container.replaceChild(getFragement(page2), document.getElementById(oldPageRef));
         page2Listeners();
         pageNumber++;
