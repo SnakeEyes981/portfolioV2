@@ -1,78 +1,71 @@
-//Generates Random Color
+// Generates Random Color
+const colorPaletteLight = ['#F2FF49', '#D7263D', '#6CCFF6', '#F49F0A', '#1E1E24'];
+const colorPaletteDark = ['#A1CDA8', '#FF4242', '#70A37F', '#FFC800', '#0081AF'];
+let previousRandomNumber = -1;
 
-let colorPaletteLight = ['#F2FF49','#D7263D','#6CCFF6','#F49F0A','#1E1E24']
-let colorPaletteDark = ['#A1CDA8','#FF4242','#70A37F','#FFC800','#0081AF']
-let previousRandomNumber = -1
-
-function generateColor () {
+function generateColor() {
     let rand;
     do {
-        rand = Math.floor(Math.random() * 5);
+        rand = Math.floor(Math.random() * colorPaletteLight.length);
     } while (rand === previousRandomNumber);
     previousRandomNumber = rand;
     return darkSelector.classList.contains('dark') ? colorPaletteDark[rand] : colorPaletteLight[rand];
 }
 
-var darkSwitch = document.getElementById('darkSwitch'); //button
-var darkSelector = document.getElementById('darkMode'); //html mode
-var customBtn = document.getElementsByClassName('custom-btn');
-var btnShadow = document.getElementById('btnShadow');
-var container = document.getElementById('contentBox');
-var animatedRectangle = document.getElementById('rectangle');
+const darkSwitch = document.getElementById('darkSwitch');
+const darkSelector = document.getElementById('darkMode');
+const customBtn = document.querySelector('.custom-btn');
+const btnShadow = document.getElementById('btnShadow');
+const container = document.getElementById('contentBox');
 
-
-
-darkSwitch.addEventListener('click', function() {
- darkSelector.classList.toggle('dark');
-})
-
+darkSwitch.addEventListener('click', () => {
+    darkSelector.classList.toggle('dark');
+});
 
 function page1Listeners() {
-    animatedRectangle = document.getElementById('rectangle');
-    animatedRectangle.addEventListener('animationiteration', function () {
-        let tempColor = generateColor();
-        animatedRectangle.style.stroke = tempColor;
-        if (btnShadow) btnShadow.style.background = tempColor;
-        if (customBtn.length > 0) customBtn[0].style.borderColor = tempColor;
-    });
-}
-
-let pageNumber = 1; // Variable to save current Page Reference
-
-function pageTransition () {
-    //Current Page = Old Page
-    let tempPage = pageNumber;
-    let oldPage, newPage;
-    console.log(tempPage);
-    if (tempPage == 1) {
-        oldPage = document.getElementById('page1');
-    } else if (tempPage == 2) {
-        oldPage = document.getElementById('page2');
-    } else if (tempPage == 3) {
-        oldPage = document.getElementById('page3');
-    } else if (tempPage == 4) {
-        oldPage = document.getElementById('page4');
-    } else {
-        oldPage = null;
+    const animatedRectangle = document.getElementById('rectangle');
+    if(animatedRectangle) {
+        animatedRectangle.addEventListener('animationiteration', () => {
+            const tempColor = generateColor();
+            animatedRectangle.style.stroke = tempColor;
+            if (btnShadow) btnShadow.style.background = tempColor;
+            if (customBtn) customBtn.style.borderColor = tempColor;
+        });
     }
-    console.log(oldPage);
-
-    oldPage.style.animation = 'removePage 2s linear forward'
 }
 
 page1Listeners();
 
-function page2Listeners () {
-    const animateText = document.getElementsByClassName('animate-text');
-    animateText[0].style.transition = 'all 2s'
-    const intervalID = setInterval(() => {
-        if(pageNumber != 2) {clearInterval(intervalID)}
-        animateText[0].style.color = generateColor();
-    }, 2000);
+let pageNumber = 1; // Variable to save current Page Reference
 
+function pageTransition(callback) {
+    const oldPage = document.getElementById(`page${pageNumber}`);
+    if (oldPage) {
+        oldPage.style.animation = 'removePage 0.5s linear forwards';
+        setTimeout(callback, 500); // Ensure the animation completes before the callback is called
+    } else {
+        callback();
+    }
 }
 
-const page1 = `<div id="page1" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6">
+function page2Listeners() {
+    if(pageNumber === 1) {
+        const animateText = document.getElementsByClassName('animate-text');
+        if (animateText) {
+            animateText[0].style.transition = 'all 4s';
+            const intervalID = setInterval(() => {
+                if (pageNumber !== 2) {
+                    clearInterval(intervalID);
+                } else {
+                    animateText[0].style.color = generateColor();
+                }
+            }, 4000);
+        }
+    }
+}
+
+const pages = {
+    page1: `<div id="page1" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6">
                 <div id="container" class="relative w-full">
                     <svg id="rectangle" class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1098.55 467.93" style="fill:none; stroke:#000; stroke-width:40px; stroke-miterlimit:10">
                         <path id="combined_path" class="path" d="M1083.55 452.93 L15 452.93 L15 233.97 M15 15 L1083.55 15 L1083.55 233.97"/>
@@ -82,19 +75,93 @@ const page1 = `<div id="page1" class="col-start-1 col-span-12 md:col-start-4 md:
                         <h1 class="headingText text-animate transition-all duration-700">yaseen</h1>
                     </div>
                 </div>
-            </div>`;
-const page2 = `<div id="page2" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6 px-6">
-                <h1 class="font-rokkitt font-bold leading-5 sm:leading-none text-xl sm:text-3xl 2xl:text-6xl text-justify text-teal-500 dark:text-cyan-300 animate-text">
+            </div>`,
+    page2: `<div id="page2" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6 px-6">
+                <h1 class="font-rokkitt font-bold leading-5 sm:leading-none text-xl sm:text-3xl 2xl:text-4xl text-justify text-teal-500 dark:text-cyan-300 animate-text">
                     Hey there! I am a full-stack web developer with a strong knowledge and understanding of modern technologies and frameworks. I specialize in creating complex, responsive web designs from scratch, ensuring that every site is both functional and visually stunning. My expertise includes not only front-end technologies like HTML, CSS, and JavaScript but also back-end development with Node.js, Express, and databases like MongoDB and SQL.
                 </h1>
-            </div>`;
-// const page3 = document.getElementById('')
-// const page4 = document.getElementById('')
-function getFragement(htmlString) {
+            </div>`,
+    page3: `<div id="page3" class="col-span-12 grid grid-cols-12 gap-4 md:gap-8 py-4 md:p-8">
+                <div class="group group-hover:opacity-0 card-container">
+                    <div class="group-hover:opacity-100 card-design">
+                        <h5 class="name font-bold text-lg uppercase">Movie Engine</h5>
+                        <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
+                        <button class="card-btn">See More!</button>
+                    </div>
+                    <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
+                        <img class="h-full w-full object-cover" src="./assets/images/movieengineHOME.png" alt="">
+                    </div>
+                </div>
+                <div class="group group-hover:opacity-0 card-container">
+                    <div class="group-hover:opacity-100 card-design">
+                        <h5 class="name font-bold text-lg uppercase">Movie Engine</h5>
+                        <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
+                        <button class="card-btn">See More!</button>
+                    </div>
+                    <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
+                        <img class="h-full w-full object-cover" src="./assets/images/moviedetails1.png" alt="">
+                    </div>
+                </div>
+                <div class="group group-hover:opacity-0 card-container">
+                    <div class="group-hover:opacity-100 card-design">
+                        <h5 class="name font-bold text-lg uppercase">Movie Engine</h5>
+                        <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
+                        <button class="card-btn">See More!</button>
+                    </div>
+                    <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
+                        <img class="h-full w-full object-cover" src="./assets/images/restaurantLogin.png" alt="">
+                    </div>
+                </div>
+                <div class="group group-hover:opacity-0 card-container">
+                    <div class="group-hover:opacity-100 card-design">
+                        <h5 class="name font-bold text-lg uppercase">Movie Engine</h5>
+                        <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
+                        <button class="card-btn">See More!</button>
+                    </div>
+                    <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
+                        <img class="h-full w-full object-cover" src="./assets/images/storePageHome.png" alt="">
+                    </div>
+                </div>
+            </div>`,
+    page4: `<div id="page4" class="col-span-12 grid grid-cols-12 content-center text-center gap-8 text-7xl">
+                <div class="col-start-4 col-span-2 group">
+                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-twitter group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                    </div>
+                </div>
+                <div class="col-start-6 col-span-2 group">
+                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-github group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                    </div>
+                </div>
+                <div class="col-start-8 col-span-2 group">
+                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-gitlab group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                    </div>
+                </div>
+                <div class="col-start-4 col-span-2 group">
+                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-behance group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                    </div>
+                </div>
+                <div class="col-start-6 col-span-2 group">
+                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-meta group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                    </div>
+                </div>
+                <div class="col-start-8 col-span-2 group">
+                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-google group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                    </div>
+                </div>
+            </div>`
+};
+
+function getFragment(htmlString) {
     const tempContainer = document.createElement('div');
     tempContainer.innerHTML = htmlString;
     const fragment = document.createDocumentFragment();
-    while(tempContainer.firstChild){
+    while (tempContainer.firstChild) {
         fragment.appendChild(tempContainer.firstChild);
     }
     return fragment;
@@ -102,31 +169,34 @@ function getFragement(htmlString) {
 
 const renderBtn = document.getElementById('renderSwitch');
 
-
 renderBtn.addEventListener('click', () => {
-    const oldPageRef = document.getElementById('contentBox').firstElementChild.id;
-    if(pageNumber == 1) {
-        pageTransition();
-        container.replaceChild(getFragement(page2), document.getElementById(oldPageRef));
-        page2Listeners();
-        pageNumber++;
-        renderBtn.innerHTML = 'want to see my work?';
+    const oldPageRef = document.getElementById('contentBox').firstElementChild;
+    if (oldPageRef) {
+        pageTransition(() => {
+            let newPage;
+            switch(pageNumber) {
+                case 1:
+                    newPage = getFragment(pages.page2);
+                    renderBtn.textContent = 'see my work';
+                    break;
+                case 2:
+                    newPage = getFragment(pages.page3);
+                    renderBtn.textContent = 'contact me';
+                    break;
+                case 3:
+                    newPage = getFragment(pages.page4);
+                    renderBtn.textContent = 'home';
+                    break;
+                case 4:
+                    newPage = getFragment(pages.page1);
+                    renderBtn.textContent = 'about me';
+                    pageNumber = 0; // Reset to 0 to cycle pages
+                    break;
+            }
+            container.replaceChild(newPage, oldPageRef);
+            page1Listeners();
+            page2Listeners();
+            pageNumber++;
+        });
     }
-    else if(pageNumber == 2) {
-        container.replaceChild(getFragement(page1), document.getElementById(oldPageRef));
-        pageNumber--;
-        page1Listeners();
-        renderBtn.innerHTML = 'who am i?'
-    }
-    
-    // else if(pageNumber == 3) {
-    //     container.replaceChild(getFragement(page1), document.getElementById(oldPageRef));
-    //     pageNumber++;
-    // }
-    // else if(pageNumber == 4) {
-    //     container.replaceChild(getFragement(page1), document.getElementById(oldPageRef));
-    //     pageNumber = 1;
-    // }
-//    else if(pageNumber == 3) container.replaceChild(getFragement(page3), document.getElementById(oldPageRef))
-//    else if(pageNumber == 4) container.replaceChild(getFragement(page4), document.getElementById(oldPageRef))
-})
+});

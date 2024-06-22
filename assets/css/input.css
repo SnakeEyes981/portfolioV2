@@ -8,11 +8,27 @@
 
 @layer components {
     .custom-btn {
-        @apply border-black text-lg sm:text-2xl 2xl:text-4xl 2xl:border-8 font-bold px-12 sm:px-20 py-0 sm:py-2 2xl:px-28 2xl:py-4 rounded-e-full rounded-b-full font-raleway uppercase border-4 border-black dark:border-amber-400 transition ease-in-out duration-300
+        @apply border-black text-lg sm:text-2xl 2xl:text-2xl 2xl:border-4 font-bold px-6 sm:px-20 py-0 sm:py-2 2xl:px-28 2xl:py-2 rounded-e-full rounded-b-full font-raleway uppercase border-4 border-black dark:border-amber-400 transition ease-in-out duration-300
     }
 
     .headingText {
-        @apply font-rokkitt text-3xl sm:text-8xl md:text-7xl lg:text-9xl 2xl:text-[12rem] font-black uppercase tracking-widest
+        @apply font-rokkitt text-4xl sm:text-8xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase tracking-widest
+    }
+
+    .card-container {
+        @apply col-span-12 md:col-span-4 relative overflow-hidden rounded-2xl opacity-100 transition
+    }
+
+    .img-container {
+        @apply h-full w-full overflow-hidden opacity-100 transition-all duration-500
+    }
+
+    .card-design {
+        @apply text-center px-4 sm:px-8 absolute opacity-0 transition-all duration-700 inset-0 h-full w-full flex flex-col justify-evenly items-center rounded-2xl dark:bg-gradient-to-bl dark:from-neutral-800 bg-gradient-to-bl from-stone-200
+    }
+    
+    .card-btn {
+        @apply  font-semibold border border-black dark:border-white w-1/2 rounded-full transition hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black
     }
 }
 
@@ -21,13 +37,31 @@
     box-shadow: 0px 0px 80px 1px white;
 }
 
+* {
+    scrollbar-width: 2px;
+    scrollbar-color: seagreen;
+    scrollbar-track-color: gray;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+}
+*::-webkit-scrollbar-track {
+    background-color: black;
+    border-radius: 50px;
+    padding: 2px;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(240, 11, 61);
+    border-radius: 50px;
+}
+
 .path {
     stroke-dashoffset: 0;
     stroke-dasharray: 3000;
     animation: draw 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s forwards infinite;
     animation: name duration timing-function delay iteration-count direction fill-mode;
 }
-
 
 
 @keyframes draw {
@@ -41,18 +75,26 @@
 
 @keyframes removePage {
     from {
-        opacity: 100%;
+        opacity: 1;
+        transform: translateY(0);
     }
     to {
-        opacity: 0%;
+        opacity: 0;
+        transform: translateY(-100%);
     }
 }
 
-@keyframes addPage {
+#page1, #page2, #page3, #page4 {
+    animation: appearPage 0.5s linear forwards;
+}
+
+@keyframes appearPage {
     from {
-        opacity: 0%;
+        opacity: 0;
+        transform: translateY(100%);
     }
     to {
-        opacity: 100%
+        opacity: 1;
+        transform: translateY(0);
     }
 }
