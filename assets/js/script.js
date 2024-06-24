@@ -1,69 +1,3 @@
-// Generates Random Color
-const colorPaletteLight = ['#F2FF49', '#D7263D', '#6CCFF6', '#F49F0A', '#1E1E24'];
-const colorPaletteDark = ['#A1CDA8', '#FF4242', '#70A37F', '#FFC800', '#0081AF'];
-let previousRandomNumber = -1;
-
-function generateColor() {
-    let rand;
-    do {
-        rand = Math.floor(Math.random() * colorPaletteLight.length);
-    } while (rand === previousRandomNumber);
-    previousRandomNumber = rand;
-    return darkSelector.classList.contains('dark') ? colorPaletteDark[rand] : colorPaletteLight[rand];
-}
-
-const darkSwitch = document.getElementById('darkSwitch');
-const darkSelector = document.getElementById('darkMode');
-const customBtn = document.querySelector('.custom-btn');
-const btnShadow = document.getElementById('btnShadow');
-const container = document.getElementById('contentBox');
-
-darkSwitch.addEventListener('click', () => {
-    darkSelector.classList.toggle('dark');
-});
-
-function page1Listeners() {
-    const animatedRectangle = document.getElementById('rectangle');
-    if(animatedRectangle) {
-        animatedRectangle.addEventListener('animationiteration', () => {
-            const tempColor = generateColor();
-            animatedRectangle.style.stroke = tempColor;
-            if (btnShadow) btnShadow.style.background = tempColor;
-            if (customBtn) customBtn.style.borderColor = tempColor;
-        });
-    }
-}
-
-page1Listeners();
-
-let pageNumber = 1; // Variable to save current Page Reference
-
-function pageTransition(callback) {
-    const oldPage = document.getElementById(`page${pageNumber}`);
-    if (oldPage) {
-        oldPage.style.animation = 'removePage 0.5s linear forwards';
-        setTimeout(callback, 500); // Ensure the animation completes before the callback is called
-    } else {
-        callback();
-    }
-}
-
-function page2Listeners() {
-    if(pageNumber === 1) {
-        const animateText = document.getElementsByClassName('animate-text');
-        if (animateText) {
-            animateText[0].style.transition = 'all 4s';
-            const intervalID = setInterval(() => {
-                if (pageNumber !== 2) {
-                    clearInterval(intervalID);
-                } else {
-                    animateText[0].style.color = generateColor();
-                }
-            }, 4000);
-        }
-    }
-}
-
 const pages = {
     page1: `<div id="page1" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6">
                 <div id="container" class="relative w-full">
@@ -77,7 +11,7 @@ const pages = {
                 </div>
             </div>`,
     page2: `<div id="page2" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6 px-6">
-                <h1 class="font-rokkitt font-bold leading-5 sm:leading-none text-xl sm:text-3xl 2xl:text-4xl text-justify text-teal-500 dark:text-cyan-300 animate-text">
+                <h1 class="font-rokkitt font-bold leading-5 sm:leading-none text-xl sm:text-3xl 2xl:text-3xl text-justify text-teal-500 dark:text-cyan-300 animate-text">
                     Hey there! I am a full-stack web developer with a strong knowledge and understanding of modern technologies and frameworks. I specialize in creating complex, responsive web designs from scratch, ensuring that every site is both functional and visually stunning. My expertise includes not only front-end technologies like HTML, CSS, and JavaScript but also back-end development with Node.js, Express, and databases like MongoDB and SQL.
                 </h1>
             </div>`,
@@ -124,38 +58,123 @@ const pages = {
                 </div>
             </div>`,
     page4: `<div id="page4" class="col-span-12 grid grid-cols-12 content-center text-center gap-8 text-7xl">
-                <div class="col-start-4 col-span-2 group">
-                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
-                        <i class="fa-brands fa-twitter group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                <div class="col-start-4 col-span-2 group hover:cursor-none" onclick="goTo('https://twitter.com/hassanyaseen22')">
+                    <div title="X [Twitter]" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-twitter group-hover:text-blue-400"></i>
                     </div>
                 </div>
-                <div class="col-start-6 col-span-2 group">
-                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
-                        <i class="fa-brands fa-github group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                <div class="col-start-6 col-span-2 group hover:cursor-none" onclick="goTo('https://github.com/snakeeyes981')">
+                    <div title="Github" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-github group-hover:text-amber-400"></i>
                     </div>
                 </div>
-                <div class="col-start-8 col-span-2 group">
-                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
-                        <i class="fa-brands fa-gitlab group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                <div class="col-start-8 col-span-2 group hover:cursor-none" onclick="goTo('https://www.linkedin.com/in/hassanyaseenworks')">
+                    <div title="LinkedIn" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-linkedin group-hover:text-blue-500"></i>
                     </div>
                 </div>
-                <div class="col-start-4 col-span-2 group">
-                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
-                        <i class="fa-brands fa-behance group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                <div class="col-start-4 col-span-2 group hover:cursor-none" onclick="goTo('https://wa.me/+923326953258')">
+                    <div title="Whatsapp" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-whatsapp group-hover:text-emerald-500"></i>
                     </div>
                 </div>
-                <div class="col-start-6 col-span-2 group">
-                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
-                        <i class="fa-brands fa-meta group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                <div class="col-start-6 col-span-2 group hover:cursor-none" onclick="goTo('https://www.instagram.com/hassanyaseen981')">
+                    <div title="Instagram" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-instagram group-hover:text-orange-500"></i>
                     </div>
                 </div>
-                <div class="col-start-8 col-span-2 group">
-                    <div class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
-                        <i class="fa-brands fa-google group-hover:text-white dark:group-hover:text-black transition duration-300"></i>
+                <div class="col-start-8 col-span-2 group hover:cursor-none" onclick="goTo('mailto:hassanyaseenworks@gmail.com')">
+                    <div title="Gmail" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                        <i class="fa-brands fa-google group-hover:text-yellow-400"></i>
                     </div>
                 </div>
             </div>`
 };
+
+
+// Generates Random Color
+const colorPaletteLight = ['#F2FF49', '#D7263D', '#6CCFF6', '#F49F0A', '#1E1E24'];
+const colorPaletteDark = ['#A1CDA8', '#FF4242', '#70A37F', '#FFC800', '#0081AF'];
+let previousRandomNumber = -1;
+
+function generateColor() {
+    let rand;
+    do {
+        rand = Math.floor(Math.random() * colorPaletteLight.length);
+    } while (rand === previousRandomNumber);
+    previousRandomNumber = rand;
+    return darkSelector.classList.contains('dark') ? colorPaletteDark[rand] : colorPaletteLight[rand];
+}
+
+const darkSelector = document.getElementById('darkMode');
+const customBtn = document.querySelector('.custom-btn');
+const btnShadow = document.getElementById('btnShadow');
+const container = document.getElementById('contentBox');
+
+
+
+function page1Listeners() {
+    const animatedRectangle = document.getElementById('rectangle');
+    if(animatedRectangle) {
+        animatedRectangle.addEventListener('animationiteration', () => {
+            const tempColor = generateColor();
+            animatedRectangle.style.stroke = tempColor;
+            if (btnShadow) btnShadow.style.background = tempColor;
+            if (customBtn) customBtn.style.borderColor = tempColor;
+        });
+    }
+}
+
+page1Listeners();
+
+let pageNumber = 1; // Variable to save current Page Reference
+
+function pageTransition(callback) {
+    const oldPage = document.getElementById(`page${pageNumber}`);
+    if (oldPage) {
+        oldPage.style.animation = 'removePage 0.5s linear forwards';
+        setTimeout(callback, 500); // Ensure the animation completes before the callback is called
+    } else {
+        callback();
+    }
+}
+
+function page2Listeners() {
+    if(pageNumber === 1) {
+        const animateText = document.getElementsByClassName('animate-text');
+        if (animateText) {
+            animateText[0].style.transition = 'all 4s';
+            const intervalID = setInterval(() => {
+                if (pageNumber !== 2) {
+                    clearInterval(intervalID);
+                } else {
+                    animateText[0].style.color = generateColor();
+                }
+            }, 4000);
+        }
+    }
+}
+
+function darkBtnAnimate (ref) {
+    ref.firstChild.style.animation = 'none';
+
+    // Wait for a brief moment to allow the style removal to take effect
+    setTimeout(() => {
+        // Apply the animation again
+        ref.firstChild.style.animation = 'animateSwitch 0.6s ease-out';
+
+        // Listen for animationend event to toggle classes and perform other actions
+        ref.firstChild.addEventListener('animationend', () => {
+            darkSelector.classList.toggle('dark');
+            ref.firstChild.classList.toggle('fa-moon');
+            ref.firstChild.classList.toggle('fa-sun');
+        }, { once: true }); // Use once option to ensure the event listener triggers only once
+    }, 50); // Adjust timing to ensure proper reset and application of animation
+}
+
+function goTo (website) {
+    window.open(website, 'blank')
+}
 
 function getFragment(htmlString) {
     const tempContainer = document.createElement('div');
@@ -200,3 +219,12 @@ renderBtn.addEventListener('click', () => {
         });
     }
 });
+
+
+function showModal () {
+    document.getElementById('modal').classList.toggle('hidden');
+}
+
+function closeModal () {
+    document.getElementById('modal').classList.toggle('hidden');
+}
