@@ -20,7 +20,7 @@ const pages = {
                     <div class="group-hover:opacity-100 card-design">
                         <h5 class="name font-bold text-lg uppercase">Movie Engine</h5>
                         <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
-                        <button class="card-btn">See More!</button>
+                        <button class="card-btn" onclick="showModal('movieengine')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
                         <img class="h-full w-full object-cover" src="./assets/images/movieengineHOME.png" alt="">
@@ -28,29 +28,29 @@ const pages = {
                 </div>
                 <div class="group group-hover:opacity-0 card-container">
                     <div class="group-hover:opacity-100 card-design">
-                        <h5 class="name font-bold text-lg uppercase">Movie Engine</h5>
+                        <h5 class="name font-bold text-lg uppercase">Zappy Restaurant</h5>
                         <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
-                        <button class="card-btn">See More!</button>
+                        <button class="card-btn" onclick="showModal()">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
-                        <img class="h-full w-full object-cover" src="./assets/images/moviedetails1.png" alt="">
+                        <img class="h-full w-full object-cover" src="./assets/images/restaurant-Home.jpeg" alt="">
+                    </div>
+                </div>
+                <div class="group group-hover:opacity-0 card-container">
+                    <div class="group-hover:opacity-100 card-design">
+                        <h5 class="name font-bold text-lg uppercase">Babies Sweet</h5>
+                        <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
+                        <button class="card-btn" onclick="showModal()">See More!</button>
+                    </div>
+                    <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
+                        <img class="h-full w-full object-cover" src="./assets/images/babiesweet.png" alt="">
                     </div>
                 </div>
                 <div class="group group-hover:opacity-0 card-container">
                     <div class="group-hover:opacity-100 card-design">
                         <h5 class="name font-bold text-lg uppercase">Movie Engine</h5>
                         <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
-                        <button class="card-btn">See More!</button>
-                    </div>
-                    <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
-                        <img class="h-full w-full object-cover" src="./assets/images/restaurantLogin.png" alt="">
-                    </div>
-                </div>
-                <div class="group group-hover:opacity-0 card-container">
-                    <div class="group-hover:opacity-100 card-design">
-                        <h5 class="name font-bold text-lg uppercase">Movie Engine</h5>
-                        <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
-                        <button class="card-btn">See More!</button>
+                        <button class="card-btn" onclick="showModal()">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
                         <img class="h-full w-full object-cover" src="./assets/images/storePageHome.png" alt="">

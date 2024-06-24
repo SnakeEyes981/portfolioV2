@@ -9,9 +9,6 @@
 </head>
 <body>
     <div class="flex flex-col justify-evenly min-h-screen max-h-screen overflow-hidden bg-white text-black dark:bg-black dark:text-white transition">
-        <!-- <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1098.55 467.93" style="fill:none; stroke:#000; stroke-width:20px; stroke-miterlimit:10">
-            <path id="combined_path" class="path" d="M1083.55 452.93 L15 452.93 L15 233.97 M15 15 L1083.55 15 L1083.55 233.97"/>
-        </svg> -->
         <div class="flex justify-center items-center">
             <button id="darkSwitch" class="block bg-black rounded-full p-2 w-12 h-12 xl:h-12 xl:w-12 dark:bg-white" onclick="darkBtnAnimate(this)"><i class="text-2xl text-white fa-solid fa-moon dark:text-black"></i></button>
         </div>
@@ -31,6 +28,36 @@
         <div class="flex justify-center">
             <div id="btnShadow" class="group border-transparent bg-black rounded-b-full rounded-e-full dark:bg-amber-400 transition-colors">
                 <button id="renderSwitch" class="group-hover:-translate-x-2 group-hover:-translate-y-2 custom-btn bg-white dark:bg-black">about me</button>
+            </div>
+        </div>
+    </div>
+
+    <!--MODAL-->
+    <div id="modal" class="hidden absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-black/10 max-h-[100vh] w-full">
+        <div class="flex justify-end py-2 px-8">
+            <button onclick="closeModal()" class="rounded-full text-black text-3xl font-bold dark:text-white">&Cross;</button>
+        </div>
+        <div class="flex flex-col items-center text-black dark:text-white">
+            <div class="w-3/5 space-y-2">
+                <div class="max-h-[40vh] overflow-hidden rounded-xl border border-black rounded-xl dark:bg-black dark:border-white">
+                    <img class="h-full w-full object-cover" src="./assets/images/movieengineHOME.png" alt="screenshot">
+                </div>
+                <div class="projectDetails bg-white border border-black rounded-xl px-8 py-4 dark:bg-black dark:border-white">
+                    <h5 class="text-2xl font-bold">Technologies Used</h5>
+                    <div class="flex py-2 gap-x-8">
+                        <div class=""><i class="text-5xl text-orange-600 fa-brands fa-html5"></i></div>
+                        <div class=""><i class="text-5xl text-blue-500 fa-brands fa-css3-alt"></i></div>
+                        <div class=""><i class="text-5xl text-yellow-400 fa-brands fa-js"></i></div>
+                        <div class=""><i class="text-5xl text-blue-500 fa-brands fa-react"></i></div>
+                    </div>
+                </div>
+                <div class="bg-white border border-black rounded-xl px-8 py-4 dark:bg-black dark:border-white">
+                    <h3 class="text-centr uppercase text-4xl font-bold">Movie Engine</h3>
+                    <p class="text-xl">Movie Engine is database of movies, Users can search and see details of any movie
+                        Movie Engine is database of movies, Users can search and see details of any movieMovie Engine is database of movies, Users can search and see details of any movie
+                    </p>
+                    <a class="inline-flex justify-center text-center py-1 mt-4 px-4 rounded-lg capitalize font-bold border border-black bg-white text-black hover:bg-black hover:text-white dark:bg-black dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black transition" href="movieengine.vercel.app">visit website</a>
+                </div>
             </div>
         </div>
     </div>

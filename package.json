@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-build": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
-    "build": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css && npm update"
+    "build": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css && npm install"
   },
   "keywords": [
     "hassan",
