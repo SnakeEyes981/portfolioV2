@@ -23,7 +23,7 @@ const pages = {
                         <button class="card-btn" onclick="showModal('movieengine')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
-                        <img class="h-full w-full object-cover" src="./assets/images/movieengineHOME.png" alt="">
+                        <img class="h-full w-full object-cover" src="https://i.ibb.co/p4hrBKD/movieengine-HOME.png" alt="">
                     </div>
                 </div>
                 <div class="group group-hover:opacity-0 card-container">
@@ -33,7 +33,7 @@ const pages = {
                         <button class="card-btn" onclick="showModal('zappy')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
-                        <img class="h-full w-full object-cover" src="./assets/images/restaurant-Home.jpeg" alt="">
+                        <img class="h-full w-full object-cover" src="https://i.ibb.co/yN41SFp/restaurant-Home.jpg" alt="">
                     </div>
                 </div>
                 <div class="group group-hover:opacity-0 card-container">
@@ -43,7 +43,7 @@ const pages = {
                         <button class="card-btn" onclick="showModal('babiessweet')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
-                        <img class="h-full w-full object-cover" src="./assets/images/babiesweet.png" alt="">
+                        <img class="h-full w-full object-cover" src="https://i.ibb.co/9ysshkn/babiesweet.png" alt="">
                     </div>
                 </div>
                 <div class="group group-hover:opacity-0 card-container">
@@ -53,7 +53,7 @@ const pages = {
                         <button class="card-btn" onclick="showModal('dtek')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
-                        <img class="h-full w-full object-cover" src="./assets/images/storePageHome.png" alt="">
+                        <img class="h-full w-full object-cover" src="https://i.ibb.co/bQXmpcK/store-Page-Home.png" alt="">
                     </div>
                 </div>
             </div>`,
