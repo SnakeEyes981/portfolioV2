@@ -12,11 +12,11 @@
     }
 
     .headingText {
-        @apply font-rokkitt text-4xl sm:text-8xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase tracking-widest
+        @apply font-rokkitt text-5xl sm:text-8xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase tracking-widest
     }
 
     .card-container {
-        @apply col-span-12 lg:col-span-4 relative overflow-hidden rounded-2xl opacity-100 transition border-2 border-white
+        @apply col-span-12 h-44 sm:h-56 w-full lg:col-span-4 relative overflow-hidden rounded-2xl opacity-100 transition border-2 border-white
     }
 
     .img-container {
@@ -36,6 +36,15 @@
 #darkSwitch {
     box-shadow: 0px 0px 80px 1px white;
 }
+
+body, div, button, a {
+    cursor: url('../images/cursor.png') 8 8, auto;
+}
+
+#modal {
+    cursor: url('../images/cursor.png') 8 8, auto;
+}
+
 
 * {
     scrollbar-width: 2px;

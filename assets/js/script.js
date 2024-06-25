@@ -15,7 +15,7 @@ const pages = {
                     Hey there! I am a full-stack web developer with a strong knowledge and understanding of modern technologies and frameworks. I specialize in creating complex, responsive web designs from scratch, ensuring that every site is both functional and visually stunning. My expertise includes not only front-end technologies like HTML, CSS, and JavaScript but also back-end development with Node.js, Express, and databases like MongoDB and SQL.
                 </h1>
             </div>`,
-    page3: `<div id="page3" class="col-span-12 grid grid-cols-12 gap-4 md:gap-8 py-4 md:p-8">
+    page3: `<div id="page3" class="max-h-[70vh] overflow-auto col-span-12 grid grid-cols-12 gap-4 md:gap-8 py-4 md:p-8">
                 <div class="group group-hover:opacity-0 card-container">
                     <div class="group-hover:opacity-100 card-design">
                         <h5 class="name font-bold text-lg uppercase">Movie Engine</h5>
@@ -29,8 +29,8 @@ const pages = {
                 <div class="group group-hover:opacity-0 card-container">
                     <div class="group-hover:opacity-100 card-design">
                         <h5 class="name font-bold text-lg uppercase">Zappy Restaurant</h5>
-                        <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
-                        <button class="card-btn" onclick="showModal()">See More!</button>
+                        <p class="details sm:px-4">It is a web application to manage restaurant activities such as ordering, sales & much more!</p>
+                        <button class="card-btn" onclick="showModal('zappy')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
                         <img class="h-full w-full object-cover" src="./assets/images/restaurant-Home.jpeg" alt="">
@@ -39,8 +39,8 @@ const pages = {
                 <div class="group group-hover:opacity-0 card-container">
                     <div class="group-hover:opacity-100 card-design">
                         <h5 class="name font-bold text-lg uppercase">Babies Sweet</h5>
-                        <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
-                        <button class="card-btn" onclick="showModal()">See More!</button>
+                        <p class="details sm:px-4">Babies Sweet is an online store for items and gadgets for kids, such as toys, clothes and much more!</p>
+                        <button class="card-btn" onclick="showModal('babiessweet')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
                         <img class="h-full w-full object-cover" src="./assets/images/babiesweet.png" alt="">
@@ -48,43 +48,43 @@ const pages = {
                 </div>
                 <div class="group group-hover:opacity-0 card-container">
                     <div class="group-hover:opacity-100 card-design">
-                        <h5 class="name font-bold text-lg uppercase">Movie Engine</h5>
-                        <p class="details sm:px-4">Movie Engine is database of movies, Users can search and see details of any movie</p>
-                        <button class="card-btn" onclick="showModal()">See More!</button>
+                        <h5 class="name font-bold text-lg uppercase">DTEK Store</h5>
+                        <p class="details sm:px-4">DTEK is an ecommerce platform. Many brands and retailers can launch their own stores on top of this platform</p>
+                        <button class="card-btn" onclick="showModal('dtek')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
                         <img class="h-full w-full object-cover" src="./assets/images/storePageHome.png" alt="">
                     </div>
                 </div>
             </div>`,
-    page4: `<div id="page4" class="col-span-12 grid grid-cols-12 content-center text-center gap-8 text-7xl">
-                <div class="col-start-4 col-span-2 group hover:cursor-none" onclick="goTo('https://twitter.com/hassanyaseen22')">
-                    <div title="X [Twitter]" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+    page4: `<div id="page4" class="col-span-12 grid grid-cols-12 content-center text-center gap-4 sm:gap-8 text-5xl sm:text-7xl">
+                <div class="col-start-3 col-span-4 lg:col-start-4 lg:col-span-2 group hover:cursor-none" onclick="goTo('https://twitter.com/hassanyaseen22')">
+                    <div title="X [Twitter]" class="box border border-black border-4 p-8 sm:p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
                         <i class="fa-brands fa-twitter group-hover:text-blue-400"></i>
                     </div>
                 </div>
-                <div class="col-start-6 col-span-2 group hover:cursor-none" onclick="goTo('https://github.com/snakeeyes981')">
-                    <div title="Github" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                <div class="col-start-7 col-span-4 lg:col-start-6 lg:col-span-2 group hover:cursor-none" onclick="goTo('https://github.com/snakeeyes981')">
+                    <div title="Github" class="box border border-black border-4 p-8 sm:p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
                         <i class="fa-brands fa-github group-hover:text-amber-400"></i>
                     </div>
                 </div>
-                <div class="col-start-8 col-span-2 group hover:cursor-none" onclick="goTo('https://www.linkedin.com/in/hassanyaseenworks')">
-                    <div title="LinkedIn" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                <div class="col-start-3 col-span-4 lg:col-start-8 lg:col-span-2 group hover:cursor-none" onclick="goTo('https://www.linkedin.com/in/hassanyaseenworks')">
+                    <div title="LinkedIn" class="box border border-black border-4 p-8 sm:p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
                         <i class="fa-brands fa-linkedin group-hover:text-blue-500"></i>
                     </div>
                 </div>
-                <div class="col-start-4 col-span-2 group hover:cursor-none" onclick="goTo('https://wa.me/+923326953258')">
-                    <div title="Whatsapp" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                <div class="col-start-7 col-span-4 lg:col-start-4 lg:col-span-2 group hover:cursor-none" onclick="goTo('https://wa.me/+923326953258')">
+                    <div title="Whatsapp" class="box border border-black border-4 p-8 sm:p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
                         <i class="fa-brands fa-whatsapp group-hover:text-emerald-500"></i>
                     </div>
                 </div>
-                <div class="col-start-6 col-span-2 group hover:cursor-none" onclick="goTo('https://www.instagram.com/hassanyaseen981')">
-                    <div title="Instagram" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                <div class="col-start-3 col-span-4 lg:col-start-6 lg:col-span-2 group hover:cursor-none" onclick="goTo('https://www.instagram.com/hassanyaseen981')">
+                    <div title="Instagram" class="box border border-black border-4 p-8 sm:p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
                         <i class="fa-brands fa-instagram group-hover:text-orange-500"></i>
                     </div>
                 </div>
-                <div class="col-start-8 col-span-2 group hover:cursor-none" onclick="goTo('mailto:hassanyaseenworks@gmail.com')">
-                    <div title="Gmail" class="box border border-black border-4 p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
+                <div class="col-start-7 col-span-4 lg:col-start-8 lg:col-span-2 group hover:cursor-none" onclick="goTo('mailto:hassanyaseenworks@gmail.com')">
+                    <div title="Gmail" class="box border border-black border-4 p-8 sm:p-12 rounded-lg group-hover:bg-black dark:group-hover:bg-white dark:border-white transition duration-300 group-hover:scale-90">
                         <i class="fa-brands fa-google group-hover:text-yellow-400"></i>
                     </div>
                 </div>

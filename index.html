@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="./assets/css/output.css">
 </head>
 <body>
-    <div class="flex flex-col justify-evenly min-h-screen max-h-screen overflow-hidden bg-white text-black dark:bg-black dark:text-white transition">
+    <div class="flex flex-col justify-evenly max-h-dvh min-h-dvh md:min-h-screen md:max-h-screen overflow-hidden bg-white text-black dark:bg-black dark:text-white transition">
         <div class="flex justify-center items-center">
             <button id="darkSwitch" class="block bg-black rounded-full p-2 w-12 h-12 xl:h-12 xl:w-12 dark:bg-white" onclick="darkBtnAnimate(this)"><i class="text-2xl text-white fa-solid fa-moon dark:text-black"></i></button>
         </div>
-        <div id="contentBox" class="grid grid-cols-12 min-h-[70vh] max-h-[70vh] content-center px-4 sm:px-8">
+        <div id="contentBox" class="grid grid-cols-12 min-h-[70vh] max-h-[70vh] content-center px-4 sm:px-8 sm:py-0">
             <div id="page1" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6">
                 <div id="container" class="relative w-full">
                     <svg id="rectangle" class="stroke-black dark:stroke-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1098.55 467.93" style="fill:none; stroke-width:40px; stroke-miterlimit:10">
@@ -33,7 +33,7 @@
     </div>
 
     <!--MODAL-->
-    <div id="modal" class="hidden absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-black/10 max-h-[100vh] w-full">
+    <div id="modal" class="hidden absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-black/10 md:max-h-dvh md:min-h-dvh max-h-screen min-h-screen overflow-hidden w-full">
         <div class="flex justify-end py-2 px-8">
             <button onclick="closeModal()" class="rounded-full text-black text-3xl font-bold dark:text-white">&Cross;</button>
         </div>
