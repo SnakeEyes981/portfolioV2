@@ -23,7 +23,7 @@ const pages = {
                         <button class="card-btn" onclick="showModal('movieengine')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
-                        <img class="h-full w-full object-cover" src="https://i.ibb.co/p4hrBKD/movieengine-HOME.png" alt="">
+                        <img class="h-full w-full object-cover" src="./assets/images/movieengineHOME.png" alt="">
                     </div>
                 </div>
                 <div class="group group-hover:opacity-0 card-container">
@@ -33,7 +33,7 @@ const pages = {
                         <button class="card-btn" onclick="showModal('zappy')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
-                        <img class="h-full w-full object-cover" src="https://i.ibb.co/yN41SFp/restaurant-Home.jpg" alt="">
+                        <img class="h-full w-full object-cover" src="./assets/images/restaurant-Home.jpeg" alt="">
                     </div>
                 </div>
                 <div class="group group-hover:opacity-0 card-container">
@@ -43,7 +43,7 @@ const pages = {
                         <button class="card-btn" onclick="showModal('babiessweet')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
-                        <img class="h-full w-full object-cover" src="https://i.ibb.co/9ysshkn/babiesweet.png" alt="">
+                        <img class="h-full w-full object-cover" src="./assets/images/babiesweet.png" alt="">
                     </div>
                 </div>
                 <div class="group group-hover:opacity-0 card-container">
@@ -53,7 +53,7 @@ const pages = {
                         <button class="card-btn" onclick="showModal('dtek')">See More!</button>
                     </div>
                     <div class="group-hover:translate-y-96 group-hover:opacity-0 img-container">
-                        <img class="h-full w-full object-cover" src="https://i.ibb.co/bQXmpcK/store-Page-Home.png" alt="">
+                        <img class="h-full w-full object-cover" src="./assets/images/storePageHome.png" alt="">
                     </div>
                 </div>
             </div>`,
@@ -220,11 +220,68 @@ renderBtn.addEventListener('click', () => {
     }
 });
 
+//MODAL DYNAMIC PLACEHOLDER REFERENCES
+// these things are different for each project!
+const img = document.getElementById('modalImage');
+const toolsBox  = document.getElementById('modalLangContainer');
+const projectName  = document.getElementById('modalHeading');
+const projectDetails = document.getElementById('modalDetails');
+const projectLink = document.getElementById('modalLink');
 
-function showModal () {
+function getLangContainer ([]) {
+    const toolsBoxFragment = document.createDocumentFragment();
+    for (let i = 0; i < arguments.length; i++) {
+        let langName = arguments[i];
+        const newItem = document.createElement('i')
+        newItem.classList.add('fa-brands', langName)
+        toolsBoxFragment.appendChild(newItem)
+    }
+    return toolsBoxFragment;
+}
+
+
+function showModal (modal) {
+    if (modal === 'movieengine'){
+        img.src = './assets/images/movieengineHOME.png';
+        toolsBox.add
+        toolsBox.append(getLangContainer('fa-html5', 'fa-css3-alt', 'fa-js', 'fa-react'))
+        projectName.textContent = 'Movie-Engine';
+        projectDetails.textContent = 'A movie database app built with React, utilizing the OMDB API'
+        projectLink.href = 'https://movieengine.vercel.app';
+    }
+    else if (modal === 'zappy'){
+        img.src = './assets/images/restaurantLogin.png';
+        toolsBox.append(getLangContainer('fa-html5', 'fa-css3-alt', 'fa-js', 'fa-bootstrap'))
+        projectName.textContent = 'Zappy Restaurant';
+        projectDetails.textContent = 'A Restaurant Management system build using HTML, CSS, JS and Bootstrap. It contains all the essentials to a manage a restaurantn such as order processing system, sales monitoring, multiple branches management, point of sale, kitchen management system and many more useful features for restaurant businesses'
+        projectLink.href = '#';
+        projectLink.textContent = 'Website is not Live currently';
+    }
+    else if (modal === 'babiessweet'){
+        img.src = './assets/images/babiesweet.png';
+        toolsBox.append(getLangContainer('fa-html5', 'fa-css3-alt', 'fa-js', 'fa-php', 'fa-bootstrap'))
+        projectName.textContent = 'Babies Sweet';
+        projectDetails.textContent = 'An online store specifically made for selling kids items such as kids accessories, kids toys, kids clothings, kids cosmetics, kids gadgets etc.'
+        projectLink.href = 'https://babiessweet.com';
+    }
+    else if (modal === 'dtek'){
+        img.src = './assets/images/storePageHome.png';
+        toolsBox.append(getLangContainer('fa-html5', 'fa-css3-alt', 'fa-js', 'fa-laravel'))
+        projectName.textContent = 'MovieEngine';
+        projectDetails.textContent = 'An ecommerce store with the power of hosting multiple independent stores made using html & tailwindcss for frontend design and blazing fast Laravel (a php framework) for backend scripting'
+        projectLink.href = 'https://dtekbrokers.com';
+    }
     document.getElementById('modal').classList.toggle('hidden');
 }
 
 function closeModal () {
     document.getElementById('modal').classList.toggle('hidden');
+    while(toolsBox.firstChild){
+        toolsBox.removeChild(toolsBox.firstChild);
+    }
+    img.src = ''
+    projectName.textContent = ''
+    projectDetails.textContent = ''
+    projectLink.href = ''
+    projectLink.textContent = 'Visit Website'
 }

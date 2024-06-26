@@ -1081,6 +1081,10 @@ video {
   max-height: 100vh;
 }
 
+.max-h-full{
+  max-height: 100%;
+}
+
 .min-h-\[60vh\]{
   min-height: 60vh;
 }
@@ -1119,6 +1123,10 @@ video {
 
 .w-full{
   width: 100%;
+}
+
+.w-4\/5{
+  width: 80%;
 }
 
 .flex-shrink{
@@ -1657,6 +1665,10 @@ video {
   gap: 1rem;
 }
 
+.gap-2{
+  gap: 0.5rem;
+}
+
 .gap-x-8{
   -moz-column-gap: 2rem;
        column-gap: 2rem;
@@ -2162,6 +2174,11 @@ video {
   background-color: rgb(255 255 255 / 0.1);
 }
 
+.bg-red-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
 .decoration-slice{
   -webkit-box-decoration-break: slice;
           box-decoration-break: slice;
@@ -2402,6 +2419,21 @@ video {
 .text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-bold{
@@ -3168,6 +3200,11 @@ body, div, button, a {
     padding-bottom: 0px;
   }
 
+  .sm\:px-0{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
   .sm\:text-3xl{
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -3176,6 +3213,31 @@ body, div, button, a {
   .sm\:text-7xl{
     font-size: 4.5rem;
     line-height: 1;
+  }
+
+  .sm\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .sm\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .sm\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .sm\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .sm\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .sm\:leading-none{
@@ -3210,6 +3272,10 @@ body, div, button, a {
 
   .md\:min-h-screen{
     min-height: 100vh;
+  }
+
+  .md\:w-3\/5{
+    width: 60%;
   }
 
   .md\:gap-8{

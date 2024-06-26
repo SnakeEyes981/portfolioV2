@@ -9,8 +9,10 @@
     <meta property="og:title" content="Hassan Yaseen - Fullstack Web Developer">
     <meta property="og:description" content="Welcome to Hassan Yaseen's Portfolio website. Discover projects, skills, and experience of a fullstack web developer.">
     <meta property="og:url" content="https://hyworks.vercel.app">
+    <link rel="stylesheet" href="./assets/css/@fortawesome/fontawesome-free/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./assets/css/@fortawesome/fontawesome-free/css/brands.min.css">
+    <link rel="stylesheet" href="./assets/css/@fortawesome/fontawesome-free/css/solid.min.css">
     <title>Hassan Yaseen - Fullstack Web Developer</title>
-    <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/output.css">
 </head>
 <body>
@@ -39,30 +41,23 @@
     </div>
 
     <!--MODAL-->
-    <div id="modal" class="hidden absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-black/10 md:max-h-dvh md:min-h-dvh max-h-screen min-h-screen overflow-hidden w-full">
+    <div id="modal" class="hidden absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-black/10 md:max-h-dvh md:min-h-dvh max-h-screen overflow-hidden min-h-screen w-full">
         <div class="flex justify-end py-2 px-8">
             <button onclick="closeModal()" class="rounded-full text-black text-3xl font-bold dark:text-white">&Cross;</button>
         </div>
-        <div class="flex flex-col items-center text-black dark:text-white">
-            <div class="w-3/5 space-y-2">
+        <div class="flex flex-col text-black dark:text-white items-center px-6 sm:px-0">
+            <div class="w-full md:w-3/5 flex flex-col gap-2">
                 <div class="max-h-[40vh] overflow-hidden rounded-xl border border-black rounded-xl dark:bg-black dark:border-white">
-                    <img class="h-full w-full object-cover" src="./assets/images/movieengineHOME.png" alt="screenshot">
+                    <img id="modalImage" class="h-full w-full object-cover" src="" alt="websitePage">
                 </div>
                 <div class="projectDetails bg-white border border-black rounded-xl px-8 py-4 dark:bg-black dark:border-white">
-                    <h5 class="text-2xl font-bold">Technologies Used</h5>
-                    <div class="flex py-2 gap-x-8">
-                        <div class=""><i class="text-5xl text-orange-600 fa-brands fa-html5"></i></div>
-                        <div class=""><i class="text-5xl text-blue-500 fa-brands fa-css3-alt"></i></div>
-                        <div class=""><i class="text-5xl text-yellow-400 fa-brands fa-js"></i></div>
-                        <div class=""><i class="text-5xl text-blue-500 fa-brands fa-react"></i></div>
-                    </div>
+                    <h5 class="text-xl sm:text-2xl font-bold">Languages Used</h5>
+                    <div id="modalLangContainer" class="flex py-2 gap-x-8 items-center text-3xl sm:text-5xl text-black dark:text-white"></div>
                 </div>
                 <div class="bg-white border border-black rounded-xl px-8 py-4 dark:bg-black dark:border-white">
-                    <h3 class="text-centr uppercase text-4xl font-bold">Movie Engine</h3>
-                    <p class="text-xl">Movie Engine is database of movies, Users can search and see details of any movie
-                        Movie Engine is database of movies, Users can search and see details of any movieMovie Engine is database of movies, Users can search and see details of any movie
-                    </p>
-                    <a class="inline-flex justify-center text-center py-1 mt-4 px-4 rounded-lg capitalize font-bold border border-black bg-white text-black hover:bg-black hover:text-white dark:bg-black dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black transition" href="movieengine.vercel.app">visit website</a>
+                    <h3 id="modalHeading" class="text-centr uppercase text-xl sm:text-4xl font-bold"></h3>
+                    <p id="modalDetails" class="text-base sm:text-xl"></p>
+                    <a id="modalLink" target="_blank" class="text-sm sm:text-base inline-flex justify-center text-center py-1 mt-4 px-4 rounded-lg capitalize font-bold border border-black bg-white text-black hover:bg-black hover:text-white dark:bg-black dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black transition" href="">visit website</a>
                 </div>
             </div>
         </div>
