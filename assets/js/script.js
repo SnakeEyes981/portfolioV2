@@ -158,11 +158,14 @@ function page2Listeners() {
 
 function darkModeShadow () {
     const darkModeButton = document.getElementById('darkSwitch')
+    const viewportWidth = window.innerWidth;
     if (darkSelector.classList.contains('dark')) {
-        darkModeButton.style.boxShadow = '0px 0px 250px 100px white';
+        if (viewportWidth < 768)    darkModeButton.style.boxShadow = '0px 0px 120px 20px white';
+        else darkModeButton.style.boxShadow = '0px 0px 250px 100px white';
     }
     if (!(darkSelector.classList.contains('dark'))) {
-        darkModeButton.style.boxShadow = '0px 0px 250px 100px yellow';
+        if (viewportWidth < 768)    darkModeButton.style.boxShadow = '0px 0px 120px 20px yellow';
+        else darkModeButton.style.boxShadow = '0px 0px 250px 100px yellow';
     }
 }
 
