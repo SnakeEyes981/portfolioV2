@@ -155,6 +155,19 @@ function page2Listeners() {
     }
 }
 
+
+function darkModeShadow () {
+    const darkModeButton = document.getElementById('darkSwitch')
+    if (darkSelector.classList.contains('dark')) {
+        darkModeButton.style.boxShadow = '0px 0px 250px 100px white';
+    }
+    if (!(darkSelector.classList.contains('dark'))) {
+        darkModeButton.style.boxShadow = '0px 0px 250px 100px yellow';
+    }
+}
+
+darkModeShadow();
+
 function darkBtnAnimate (ref) {
     ref.firstChild.style.animation = 'none';
 
@@ -162,14 +175,16 @@ function darkBtnAnimate (ref) {
     setTimeout(() => {
         // Apply the animation again
         ref.firstChild.style.animation = 'animateSwitch 0.6s ease-out';
-
         // Listen for animationend event to toggle classes and perform other actions
         ref.firstChild.addEventListener('animationend', () => {
             darkSelector.classList.toggle('dark');
-            ref.firstChild.classList.toggle('fa-moon');
             ref.firstChild.classList.toggle('fa-sun');
+            ref.firstChild.classList.toggle('fa-moon');
+            darkModeShadow();
+            init();
         }, { once: true }); // Use once option to ensure the event listener triggers only once
     }, 50); // Adjust timing to ensure proper reset and application of animation
+    
 }
 
 function goTo (website) {
@@ -285,3 +300,58 @@ function closeModal () {
     projectLink.href = ''
     projectLink.textContent = 'Visit Website'
 }
+
+
+//Animation
+
+document.addEventListener('DOMContentLoaded', init);
+
+function init() {
+  const canvas = document.getElementById('animationContainer');
+  const ctx = canvas.getContext('2d');
+
+  // Set canvas size
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const wave = {
+    amplitude: 30,
+    frequency: 0.01,
+    speed: 0.05,
+    xOffset: 0,
+    yOffset: canvas.height / 1.3, // Center vertical position
+    lineWidth: 2,
+    color: (darkSelector.classList.contains('dark') ? '#262626' : '#22d3ee')
+  };
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+    wave.xOffset += wave.speed;
+
+    ctx.beginPath();
+    ctx.moveTo(0, wave.yOffset);
+
+    for (let x = 0; x < canvas.width; x += 10) {
+      const y = wave.yOffset + Math.sin(x * wave.frequency + wave.xOffset) * wave.amplitude;
+      ctx.lineTo(x, y);
+    }
+
+    ctx.lineTo(canvas.width, canvas.height);
+    ctx.lineTo(0, canvas.height);
+    ctx.closePath();
+
+    ctx.fillStyle = wave.color;
+    ctx.fill();
+
+    requestAnimationFrame(animate);
+  }
+
+  animate(); // Start animation loop
+}
+
+// Resize canvas on window resize
+window.addEventListener('resize', function() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
