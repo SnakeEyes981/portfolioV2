@@ -7,7 +7,7 @@
     <meta property="og:image" content="https://i.ibb.co/Q966g8B/intro-Page.png">
     <meta property="og:site_name" content="Hassan Yaseen's Portfolio">
     <meta property="og:title" content="Hassan Yaseen - Fullstack Web Developer">
-    <meta property="og:description" content="Welcome to Hassan Yaseen's Portfolio website. Discover projects, skills, and experience of a fullstack web developer.">
+    <meta property="og:description" content="Hassan Yaseen's Portfolio website. Hassan Yaseen is a fullstack web developer with expertise in building modern web applications.">
     <meta property="og:url" content="https://hyworks.vercel.app">
     <link rel="stylesheet" href="./assets/css/fontawesome-free/css/fontawesome.min.css">
     <link rel="stylesheet" href="./assets/css/fontawesome-free/css/brands.min.css">
@@ -16,48 +16,51 @@
     <link rel="stylesheet" href="./assets/css/output.css">
 </head>
 <body>
-    <div class="flex flex-col justify-evenly max-h-dvh min-h-dvh md:min-h-screen md:max-h-screen overflow-hidden bg-white text-black dark:bg-black dark:text-white transition">
-        <div class="flex justify-center items-center">
-            <button id="darkSwitch" class="block bg-black rounded-full p-2 w-12 h-12 xl:h-12 xl:w-12 dark:bg-white" onclick="darkBtnAnimate(this)"><i class="text-2xl text-white fa-solid fa-moon dark:text-black"></i></button>
-        </div>
-        <div id="contentBox" class="grid grid-cols-12 min-h-[70vh] max-h-[70vh] content-center px-4 sm:px-8 sm:py-0">
-            <div id="page1" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6">
-                <div id="container" class="relative w-full">
-                    <svg id="rectangle" class="stroke-black dark:stroke-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1098.55 467.93" style="fill:none; stroke-width:40px; stroke-miterlimit:10">
-                        <path id="combined_path" class="path" d="M1083.55 452.93 L15 452.93 L15 233.97 M15 15 L1083.55 15 L1083.55 233.97"/>
-                    </svg>
-                    <div class="absolute inset-0 inline-flex flex-col justify-center items-center">
-                        <h1 class="headingText text-animate transition duration-300">hassan</h1>
-                        <h1 class="headingText text-animate transition duration-300">yaseen</h1>
+    <div class="relative max-h-dvh min-h-dvh md:min-h-screen md:max-h-screen">
+        <canvas id="animationContainer" class="absolute z-0 inset-0 h-full w-full bg-white dark:bg-black transition duration-200"></canvas>
+        <div class="z-10 absolute inset-0 flex flex-col justify-evenly max-h-dvh min-h-dvh md:min-h-screen md:max-h-screen overflow-hidden text-black dark:text-white transition">
+            <div class="flex justify-center items-center">
+                <button id="darkSwitch" class="block bg-white rounded-full p-2 w-12 h-12 xl:h-12 xl:w-12 dark:bg-black" onclick="darkBtnAnimate(this)"><i class="text-2xl text-yellow-300 fa-solid fa-sun dark:text-white"></i></button>
+            </div>
+            <div id="contentBox" class="grid grid-cols-12 min-h-[70vh] max-h-[70vh] content-center px-4 sm:px-8 sm:py-0">
+                <div id="page1" class="col-start-1 col-span-12 md:col-start-4 md:col-span-6">
+                    <div id="container" class="relative w-full">
+                        <svg id="rectangle" class="stroke-black dark:stroke-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1098.55 467.93" style="fill:none; stroke-width:40px; stroke-miterlimit:10">
+                            <path id="combined_path" class="path" d="M1083.55 452.93 L15 452.93 L15 233.97 M15 15 L1083.55 15 L1083.55 233.97"/>
+                        </svg>
+                        <div class="absolute inset-0 inline-flex flex-col justify-center items-center">
+                            <h1 class="headingText text-animate transition duration-300">hassan</h1>
+                            <h1 class="headingText text-animate transition duration-300">yaseen</h1>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="flex justify-center">
-            <div id="btnShadow" class="group border-transparent bg-black rounded-b-full rounded-e-full dark:bg-amber-400 transition-colors">
-                <button id="renderSwitch" class="group-hover:-translate-x-2 group-hover:-translate-y-2 custom-btn bg-white dark:bg-black">about me</button>
+            <div class="flex justify-center">
+                <div id="btnShadow" class="group border-transparent bg-black rounded-b-full rounded-e-full dark:bg-amber-400 transition-colors">
+                    <button id="renderSwitch" class="group-hover:-translate-x-2 group-hover:-translate-y-2 custom-btn bg-white dark:bg-black">about me</button>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!--MODAL-->
-    <div id="modal" class="hidden absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-black/10 md:max-h-dvh md:min-h-dvh max-h-screen overflow-hidden min-h-screen w-full">
-        <div class="flex justify-end py-2 px-8">
-            <button onclick="closeModal()" class="rounded-full text-black text-3xl font-bold dark:text-white">&Cross;</button>
-        </div>
-        <div class="flex flex-col text-black dark:text-white items-center px-6 sm:px-0">
-            <div class="w-full md:w-3/5 flex flex-col gap-2">
-                <div class="max-h-[40vh] overflow-hidden rounded-xl border border-black rounded-xl dark:bg-black dark:border-white">
-                    <img id="modalImage" class="h-full w-full object-cover" src="" alt="websitePage">
-                </div>
-                <div class="projectDetails bg-white border border-black rounded-xl px-8 py-4 dark:bg-black dark:border-white">
-                    <h5 class="text-xl sm:text-2xl font-bold">Languages Used</h5>
-                    <div id="modalLangContainer" class="flex py-2 gap-x-8 items-center text-3xl sm:text-5xl text-black dark:text-white"></div>
-                </div>
-                <div class="bg-white border border-black rounded-xl px-8 py-4 dark:bg-black dark:border-white">
-                    <h3 id="modalHeading" class="text-centr uppercase text-xl sm:text-4xl font-bold"></h3>
-                    <p id="modalDetails" class="text-base sm:text-xl"></p>
-                    <a id="modalLink" target="_blank" class="text-sm sm:text-base inline-flex justify-center text-center py-1 mt-4 px-4 rounded-lg capitalize font-bold border border-black bg-white text-black hover:bg-black hover:text-white dark:bg-black dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black transition" href="">visit website</a>
+    
+        <!--MODAL-->
+        <div id="modal" class="z-20 hidden absolute inset-0 bg-white/10 backdrop-blur-xl dark:bg-black/10 md:max-h-dvh md:min-h-dvh max-h-screen overflow-hidden min-h-screen w-full">
+            <div class="flex justify-end py-2 px-8">
+                <button onclick="closeModal()" class="rounded-full text-black text-3xl font-bold dark:text-white">&Cross;</button>
+            </div>
+            <div class="flex flex-col text-black dark:text-white items-center px-6 sm:px-0">
+                <div class="w-full md:w-3/5 flex flex-col gap-2">
+                    <div class="max-h-[40vh] overflow-hidden rounded-xl border border-black rounded-xl dark:bg-black dark:border-white">
+                        <img id="modalImage" class="h-full w-full object-cover" src="" alt="websitePage">
+                    </div>
+                    <div class="projectDetails bg-white border border-black rounded-xl px-8 py-4 dark:bg-black dark:border-white">
+                        <h5 class="text-xl sm:text-2xl font-bold">Languages Used</h5>
+                        <div id="modalLangContainer" class="flex py-2 gap-x-8 items-center text-3xl sm:text-5xl text-black dark:text-white"></div>
+                    </div>
+                    <div class="bg-white border border-black rounded-xl px-8 py-4 dark:bg-black dark:border-white">
+                        <h3 id="modalHeading" class="text-centr uppercase text-xl sm:text-4xl font-bold"></h3>
+                        <p id="modalDetails" class="text-base sm:text-xl"></p>
+                        <a id="modalLink" target="_blank" class="text-sm sm:text-base inline-flex justify-center text-center py-1 mt-4 px-4 rounded-lg capitalize font-bold border border-black bg-white text-black hover:bg-black hover:text-white dark:bg-black dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black transition" href="">visit website</a>
+                    </div>
                 </div>
             </div>
         </div>
