@@ -267,7 +267,7 @@ function showModal (modal) {
     else if (modal === 'dtek'){
         img.src = './assets/images/storePageHome.png';
         toolsBox.append(getLangContainer('fa-html5', 'fa-css3-alt', 'fa-js', 'fa-laravel'))
-        projectName.textContent = 'MovieEngine';
+        projectName.textContent = 'DTEK Brokers';
         projectDetails.textContent = 'An ecommerce store with the power of hosting multiple independent stores made using html & tailwindcss for frontend design and blazing fast Laravel (a php framework) for backend scripting'
         projectLink.href = 'https://dtekbrokers.com';
     }
